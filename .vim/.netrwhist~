@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/rimd2r/Desktop/txt'
+let g:netrw_dirhist_2='/Users/rimd2r/.ssha'
+let g:netrw_dirhist_3='/Users/rimd2r/test'
+let g:netrw_dirhist_4='/Users/rimd2r/Desktop/Gyazo.app/Contents/MacOS'
+let g:netrw_dirhist_5='/Users/rimd2r/Desktop/Gyazo.app/Contents'
+let g:netrw_dirhist_6='/Users/rimd2r/Applications'

@@ -1,0 +1,75 @@
+################################
+# options
+################################
+# 現在の背景色で消去する
+defbce on
+# puttyで接続した時にウィンドウの大きさを変更しない
+termcapinfo xterm-256color 'is=^[r^[m^[2J^[H^[?7h^[?1;4;6l'
+# ハングアップしたときにscreenは自動的にデタッチする
+autodetach on
+# 起動時に著作権表示
+startup_message off
+# シェルのタイトル
+shelltitle "# |shell"
+# デフォルトシェルをzshに
+shell /bin/zsh
+# ステータス表示
+#hardstatus alwayslastline "%40L>%{=bu b}%-w%{=b cw}%n %t%{-}%+w %= %{=b g}#%H($LANG) (%l) [ %Y/%m/%d %A%c:%s ]"
+#caption always "%{=bu b}%-w %40L> %{=b cw} %n %t%{-} %+w %?%F %-063=%{=b g}#%H($LANG) (%l) [ %Y%m/%d %c:%s ] %:%= %?"
+# n2742
+caption always '%{=bu b}%-w %40L> %{=b cw} %n %t%{-} %+w %-1='
+hardstatus alwayslastline "%1=%{=b g}#%H ($LANG) (%l) %-22=%{=b g}%Y/%m/%d %c:%s"
+# 標準のLANGをutf8に
+setenv LANG ja_JP.UTF-8
+# scroll buffer 行数
+defscrollback 8195
+
+# screenが表示するメッセージ(分割線なども服務)の出力方法を決める
+# 縁：緑　文字：黒
+sorendition "+r .gk"
+# 縁：赤　文字：黒
+#sorendition "+r .rk"
+# 縁：青　文字：黒
+#sorendition "+r .bk"
+# 縁：マゼンダ　文字：黒
+#sorendition "+r .mk"
+
+
+# 縁：薄緑　文字：黒
+#sorendition "+r .Gk"
+# 縁：薄赤　文字：黒
+#sorendition "+r .Rk"
+
+################################
+# key bind
+################################
+# (バックログ時の設定)Emacs likes
+markkeys h=^B:l=^F:$=^E:^U=^Z:^D=^V
+# エスケープキーは<C-t>
+escape ^Tt
+# zombieコマンドへのバインド
+#zombie ^[
+# windowリストをb
+bind b windowlist -b
+# encodingをバインドに割り当て
+bind u eval "encoding UTF-8"
+bind e eval "encoding eucJP"
+bind s eval "encoding SJIS"
+bind j eval "encoding jis"
+# <C-c>で新しいScreen端末を開きShellをzshにする
+#bind c screen zsh
+
+# n2742
+termcapinfo xterm*|kterm*|screen* is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+# 分割関係のバインド
+bind 1 only
+bind 2 split
+bind 0 remove
+bind o focus
+
+# resize C-t,rでウインドウリサイズモード
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^] command
+bind -c resize j eval 'resize -1' 'command -c resize'
+bind -c resize k eval 'resize +1' 'command -c resize'
